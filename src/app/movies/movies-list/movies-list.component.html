@@ -1,0 +1,23 @@
+<app-generic-list [list]="movies">
+  <ng-container loadingSlot>
+    This is loading ...
+  </ng-container>
+  <ng-container emptyListSlot>
+    <b>No</b> records 2 display
+  </ng-container>
+  <ng-container content>
+      <div *ngFor="let movie of movies; let index = index" class="movie-containter">
+        <div>
+          {{ index + 1 }}) {{ movie.title | lowercase }}
+          <button style="margin-left: 1rem" (click)="remove(index)">REMOVE</button>
+        </div>
+        <div>
+          {{ movie.releaseDate | date: "dd-MMMM-yyyy" | lowercase }}
+        </div>
+        <div>
+          {{ movie.price | currency }}
+        </div>
+      </div>
+    </ng-container>
+</app-generic-list>
+

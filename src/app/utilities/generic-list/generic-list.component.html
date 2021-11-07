@@ -1,0 +1,23 @@
+<div *ngIf="!list">
+  <span #loading1>
+    <ng-content select="[loadingSlot]"></ng-content>
+  </span>
+  <span *ngIf="!loading1.innerHTML.trim()">
+    <img src="https://istnova.ru/local/templates/istnova/images/waiting.gif"/>
+  </span>
+</div>
+
+<div *ngIf="list?.length === 0">
+  <span #emptyTemplateVariable>
+    <ng-content select="[emptyListSlot]"></ng-content>
+  </span>
+  <span *ngIf="!emptyTemplateVariable.innerHTML.trim()">
+    empty list was provided
+  </span>
+</div>
+
+<!-- <div *ngIf="list?.length === 0">No records 2 display</div> -->
+
+<ng-container *ngIf="list?.length > 0">
+    <ng-content select="[content]"></ng-content>
+</ng-container>
