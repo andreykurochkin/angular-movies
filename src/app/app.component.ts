@@ -56,4 +56,5 @@ export class AppComponent implements OnInit {
   title = 'angular-movies';
   moviesInTheaters: any;
   moviesFutureReleases: any;
+  display = true;
 }

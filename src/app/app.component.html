@@ -9,7 +9,15 @@
 </app-zippy-multislot> -->
 
 <app-menu></app-menu>
-<app-rating></app-rating>
+<div>
+  <input type="text" (input)="title = $any($event.target).value" />
+</div>
+<div>
+  <input type="checkbox" checked (change)="display = !display" />
+    Display
+</div>
+<!-- <app-rating></app-rating> -->
+<app-lifecycletest *ngIf="display" [title]="title"></app-lifecycletest>
 <!-- <div class="container">
   <h2>In Theaters</h2>
   <app-movies-list [movies]="moviesInTheaters"></app-movies-list>

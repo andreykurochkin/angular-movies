@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 
 @Component({
   selector: 'app-rating',
@@ -9,7 +9,29 @@ export class RatingComponent implements OnInit {
 
   constructor() { }
 
+  @Input() maxRating = 5;
+  maxRatingArray: any;
+  @Input() selectedRate = 0;
+  previousRate = 0;
+
   ngOnInit(): void {
+    this.maxRatingArray = Array(this.maxRating).fill(0);
   }
 
+  handleMouseEnter(index: number) {
+    this.selectedRate = index + 1;
+  }
+
+  handleMouseLeave() {
+    if (this.previousRate !== 0) {
+      this.selectedRate = this.previousRate;
+    } else {
+      this.selectedRate = 0;
+    }
+  }
+
+  rate(index: number) {
+    this.selectedRate = index + 1;
+    this.previousRate = this.selectedRate;
+  }
 }
